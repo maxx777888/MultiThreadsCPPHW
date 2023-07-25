@@ -49,7 +49,6 @@ void sum_vectors(std::vector<int>& a, std::vector<int>& b, std::vector<int>& sum
 //Подсчет времени операции суммирования в потоке 
 double time_count(std::vector<int>& a, std::vector<int>& b, std::vector<int>& sum, int n_thread)
 {
-    //std::vector<int> vec_t = size_split(n_thread, v_size);
 
     std::vector<std::thread> vec_thread;
     auto start = std::chrono::steady_clock::now();
@@ -83,7 +82,7 @@ int main()
 
         auto v1 = create_vector(vec_size);
         auto v2 = create_vector(vec_size);
-        std::vector<int> sum_result(v1.size());
+        std::vector<int> sum_result(vec_size);
         data.push_back(std::make_pair(vec_size, time_count(v1, v2, sum_result, 1)));
         data.push_back(std::make_pair(vec_size, time_count(v1, v2, sum_result, 2)));
         data.push_back(std::make_pair(vec_size, time_count(v1, v2, sum_result, 4)));
@@ -92,7 +91,7 @@ int main()
         vec_size *= 10;
     }
 
-    std::cout << "        ";
+    //std::cout << "        ";
     /*for (int i = 0; i < data.size(); i+=5) {
         std::cout << std::setw(1) << data[i].first << "\t ";
     }*/
