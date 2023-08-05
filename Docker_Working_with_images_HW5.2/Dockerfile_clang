@@ -1,0 +1,7 @@
+FROM ubuntu:latest
+LABEL mantainer="homeworkMT@mail.ru"
+RUN apt-get update && apt-get install -y clang  
+WORKDIR /root/test/
+COPY main.cpp .
+RUN clang++ -o my_app main.cpp
+CMD ["./my_app"]
